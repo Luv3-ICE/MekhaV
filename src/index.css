@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+.theme {
+  background: linear-gradient(to right, #a78bfa, #3b82f6);
+}
+.border_theme {
+  background: linear-gradient(
+        rgba(239, 246, 255, 255),
+        rgba(239, 246, 255, 255)
+      )
+      padding-box,
+    linear-gradient(to right, #a78bfa, #3b82f6) border-box;
+  border: 3px solid transparent;
+  border-radius: 0.775rem;
+}
+.shadow {
+  box-shadow: 5px 5px rgba(0, 0, 0, 0.247);
+}
+.transTL {
+  transform: translate(-50%, -50%);
+}
