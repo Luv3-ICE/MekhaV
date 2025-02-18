@@ -4,10 +4,17 @@ import TutorialIcon from "../assets/Tutorial.png";
 import Tutorial from "../components/Tutorial";
 import MapView from "../components/Map";
 import ThemeBTN from "../components/ThemeBTN";
+import { useNavigate } from "react-router-dom";
 
 const Main = () => {
+  const navigate = useNavigate();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const UserName = "";
+
+  function goToCam() {
+    navigate("/Cam");
+  }
+
   return (
     <div className="BG w-screen h-screen bg-[url('src/assets/MainBG.png')] bg-[58%] bg-cover">
       <div className="flex pt-12 px-3 justify-between items-center">
@@ -23,7 +30,7 @@ const Main = () => {
       </div>
       <div className="flex flex-col items-center">
         <MapView />
-        <ThemeBTN text="Camera" className="shadow " />
+        <ThemeBTN text="Open Camera" className="shadow " onClick={goToCam} />
       </div>
 
       {isPopupOpen && <Tutorial onClose={() => setIsPopupOpen(false)} />}

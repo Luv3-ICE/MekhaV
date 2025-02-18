@@ -28,29 +28,33 @@ const Login = () => {
         <img className="w-full" src={Name} alt="" />
       </div>
 
-      <div className="absolute flex flex-col items-center top-1/2 left-1/2 transTL w-9/10 rounded-xl border-3 border-blue-700 bg-blue-50 overflow-hidden text-center font-semibold">
+      <div className="absolute flex flex-col items-center top-1/2 left-1/2 transTL w-9/10 rounded-xl border-3 border-blue-700 bg-blue-50 overflow-clip text-center font-semibold">
         <Header text="LOG IN" />
-        <p className="mx-15 my-5">
-          In or der to participate in the event, please enter your name or phone
-          number
-        </p>
-        <div className="flex items-center rounded-md border_theme px-3 py-2 w-full max-w-xs">
-          <span className="w-1/12 mr-5">
-            <img className="w-ful" src={User} alt="" />
-          </span>
-          <input
-            name="userInfo"
-            type="text"
-            placeholder="Enter your Name or number"
-            value={inputValue}
-            onChange={handleChange}
-            className="outline-none flex-1 bg-transparent placeholder-gray-400 text-gray-700"
-          />
+        <div className="w-11/12 content-center flex flex-col items-center">
+          <p className="mx-12 my-5">
+            In or der to participate in the event, please enter your name or
+            phone number
+          </p>
+
+          <div className="flex items-center rounded-md border_theme px-3 py-2 w-11/12">
+            <span className="w-6 mr-5">
+              <img className="w-full " src={User} alt="" />
+            </span>
+            <input
+              name="userInfo"
+              type="text"
+              placeholder="Enter your Name or number"
+              value={inputValue}
+              onChange={handleChange}
+              className="outline-none flex-1 bg-transparent placeholder-gray-400 text-gray-700"
+            />
+          </div>
+          <p className="mt-5 text-center mx-6 text-blue-950">
+            Your progress will be recorded based on your name or phone number.
+          </p>
+
+          <ThemeBTN text="Join" onClick={handleSubmit} className="shadow" />
         </div>
-        <p className="mt-5 text-center mx-10 text-blue-950">
-          Your progress will be recorded based on your name or phone number.
-        </p>
-        <ThemeBTN text="Join" onClick={handleSubmit} className="shadow" />
       </div>
     </div>
   );

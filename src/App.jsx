@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./index.css";
 import Login from "./pages/Login";
 import Main from "./pages/Main";
+import CamScan from "./pages/CamScan";
+import ModelViewer from "./pages/ModelViewer";
+// import ARModel from "./try";
 
 const App = () => {
   return (
@@ -10,6 +13,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/Main" element={<Main />} />
+        <Route path="/Cam" element={<CamScan />} />
+        <Route path="/Model" element={<ModelViewer />} />
       </Routes>
     </Router>
   );
