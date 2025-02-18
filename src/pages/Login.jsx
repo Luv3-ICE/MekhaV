@@ -7,7 +7,7 @@ import ThemeBTN from "../components/ThemeBTN";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+const Login = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState("");
 
@@ -16,7 +16,7 @@ function Login() {
   }
   function handleSubmit() {
     console.log("User Input:", inputValue);
-    navigate("/Map");
+    navigate("/Main");
   }
 
   return (
@@ -54,6 +54,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

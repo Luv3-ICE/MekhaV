@@ -2,17 +2,17 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./index.css";
 import Login from "./pages/Login";
-import Map from "./pages/Map";
+import Main from "./pages/Main";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/Map" element={<Map />} />
+        <Route path="/Main" element={<Main />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

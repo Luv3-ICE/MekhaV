@@ -1,0 +1,23 @@
+.slick-dots {
+  position: relative;
+  bottom: 0;
+  margin-bottom: 4px;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+.slick-dots li button:before {
+  font-size: 10px; /* ปรับขนาดจุด */
+  color: #63aedd8a; /* เปลี่ยนสีจุดปกติ */
+  opacity: 0.5;
+}
+.slick-dots li.slick-active button:before {
+  color: #71B9E5; /* เปลี่ยนสีจุดเมื่อ active */
+  opacity: 1;
+  font-size: 14px; /* ขยายขนาดจุดที่ active */
+}

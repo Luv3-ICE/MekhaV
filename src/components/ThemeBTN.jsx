@@ -1,11 +1,12 @@
 import React from "react";
 
-function Button({
-  text,icon,
+const Button = ({
+  text,
+  icon,
   onClick,
   className = "",
   iconClassName = "w-1/12 mr-5",
-}) {
+}) => {
   return (
     <button
       onClick={onClick}
@@ -21,6 +22,6 @@ function Button({
       </div>
     </button>
   );
-}
+};
 
 export default Button;
