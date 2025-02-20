@@ -1,5 +1,14 @@
 @import "tailwindcss";
+:-webkit-scrollbar {
+  display: none;
+}
 
+body {
+  margin: 0 !important;
+  padding: 0;
+  width: 100svw !important;
+  height: 100svh !important;
+}
 .theme {
   background: linear-gradient(to right, #a78bfa, #3b82f6);
 }
@@ -18,4 +27,17 @@
 }
 .transTL {
   transform: translate(-50%, -50%);
+}
+#arjs-video {
+  margin: 0 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+video{
+  width: 100% !important;
+  height: 100% !important;
+  margin-left: 0 !important;
 }

@@ -9,6 +9,6 @@ export default defineConfig({
     host: "0.0.0.0", // อนุญาตให้เข้าถึงจากภายนอก
     port: 5173, // ตรวจสอบว่า port ตรงกับที่ใช้จริง
     strictPort: true,
-    allowedHosts: ["ad01-183-88-235-220.ngrok-free.app"],
+    allowedHosts: ["f197-183-88-235-220.ngrok-free.app"],
   },
 });

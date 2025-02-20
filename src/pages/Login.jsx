@@ -20,15 +20,15 @@ const Login = () => {
   }
 
   return (
-    <div className="BG w-screen h-screen relative bg-[url('src/assets/MainBG.png')] bg-[58%] bg-cover">
+    <div className="BG w-svw h-svh relative bg-[url('src/assets/MainBG.png')] bg-[58%] bg-cover">
+      <div className="absolute top-30 w-85 left-1/2 transTL">
+        <img className="w-full" src={Name} alt="" />
+      </div>
       <div className="absolute bottom-4 left-4 w-20">
         <img className="w-full" src={Logo} alt="" />
       </div>
-      <div className="absolute top-35 w-85 left-1/2 transTL">
-        <img className="w-full" src={Name} alt="" />
-      </div>
 
-      <div className="absolute flex flex-col items-center top-1/2 left-1/2 transTL w-9/10 rounded-xl border-3 border-blue-700 bg-blue-50 overflow-clip text-center font-semibold">
+      <div className="absolute flex flex-col items-center top-3/5 left-1/2 transTL w-9/10 rounded-xl border-3 border-blue-700 bg-blue-50 overflow-clip text-center font-semibold">
         <Header text="LOG IN" />
         <div className="w-11/12 content-center flex flex-col items-center">
           <p className="mx-12 my-5">

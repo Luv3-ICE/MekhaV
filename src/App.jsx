@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import CamScan from "./pages/CamScan";
 import ModelViewer from "./pages/ModelViewer";
-// import ARModel from "./try";
+import ARScene from "./pages/tryModel";
 
 const App = () => {
   return (
@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/Main" element={<Main />} />
         <Route path="/Cam" element={<CamScan />} />
         <Route path="/Model" element={<ModelViewer />} />
+        {/* <Route path="/Model" element={<ARScene />} /> */}
       </Routes>
     </Router>
   );

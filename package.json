@@ -11,9 +11,14 @@
   },
   "dependencies": {
     "@google/model-viewer": "^4.0.0",
+    "@react-three/drei": "^9.121.5",
+    "@react-three/fiber": "^8.17.14",
+    "@react-three/postprocessing": "^2.19.1",
+    "@react-three/xr": "^6.6.5",
     "@tailwindcss/vite": "^4.0.6",
     "@zxing/library": "^0.21.3",
     "aframe": "^1.6.0",
+    "aframe-ar": "^0.2.1-a",
     "ar.js": "^2.2.2",
     "framer-motion": "^12.4.3",
     "leaflet": "^1.9.4",
@@ -23,7 +28,8 @@
     "react-router-dom": "^7.1.5",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
-    "tailwindcss": "^4.0.6"
+    "tailwindcss": "^4.0.6",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

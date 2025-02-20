@@ -16,8 +16,8 @@ const Main = () => {
   }
 
   return (
-    <div className="BG w-screen h-screen bg-[url('src/assets/MainBG.png')] bg-[58%] bg-cover">
-      <div className="flex pt-12 px-3 justify-between items-center">
+    <div className="BG w-svw h-svh bg-[url('src/assets/MainBG.png')] bg-[58%] bg-cover opacity-50">
+      <div className="flex px-3 justify-between items-center h-1/10">
         <div className="w-25">
           <img className="w-full" src={Name} alt="" />
         </div>
@@ -28,9 +28,14 @@ const Main = () => {
           <img className="w-full" src={TutorialIcon} alt="" />
         </div>
       </div>
-      <div className="flex flex-col items-center">
+
+      <div className="h-9/10 text-center content-center relative">
+        <ThemeBTN
+          text="Open Camera"
+          className="shadow transTL absolute top-9/10 left-1/2 z-50"
+          onClick={goToCam}
+        />
         <MapView />
-        <ThemeBTN text="Open Camera" className="shadow " onClick={goToCam} />
       </div>
 
       {isPopupOpen && <Tutorial onClose={() => setIsPopupOpen(false)} />}

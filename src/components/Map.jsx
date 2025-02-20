@@ -25,18 +25,14 @@ const MapView = () => {
     <MapContainer
       center={[13.7563, 100.5018]}
       zoom={20}
-      style={{ height: "75vh", width: "93%", marginTop: "2vh", zIndex: "100" }}
+      className="h-full w-full m-auto z-10"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
-      {/* แสดงตำแหน่งผู้ใช้ */}
       {userPosition && (
         <Marker position={[userPosition.lat, userPosition.lng]}>
           <Popup>คุณอยู่ที่นี่</Popup>
         </Marker>
       )}
-
-      {/* แสดงตำแหน่งดอกไม้ */}
       {flowers.map((flower) => (
         <Marker key={flower.id} position={[flower.lat, flower.lng]}>
           <Popup>{flower.name}</Popup>
