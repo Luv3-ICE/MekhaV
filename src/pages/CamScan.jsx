@@ -47,7 +47,7 @@ const CamScan = () => {
   }, [navigate]);
 
   return (
-      <div style={{ width: "100vw", height: "100vh", position: "relative" }}>
+      <div className="w-svw h-svh relative text-center bg-[url('src/assets/MainBG.png')] bg-[58%] bg-cover z-0">
       <ThemeBTN onClick={exit} text="exit" />
         <a-scene
           embedded
@@ -59,7 +59,7 @@ const CamScan = () => {
             id="lavender"
             preset="lavender"
             type="pattern"
-            url="src/assets/marker/lavender.patt"
+            url="src/assets/marker/PPT.patt"
           >
             {/* <a-box position="0 0.5 0" color="red"></a-box> */}
           </a-marker>

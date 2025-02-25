@@ -2,12 +2,14 @@
 :-webkit-scrollbar {
   display: none;
 }
-
 body {
   margin: 0 !important;
   padding: 0;
   width: 100svw !important;
   height: 100svh !important;
+}
+.stroke {
+  -webkit-text-stroke: 1px oklch(0.588 0.158 241.966);
 }
 .theme {
   background: linear-gradient(to right, #a78bfa, #3b82f6);
@@ -35,9 +37,13 @@ body {
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
+  position: absolute !important;
+  z-index: 1 !important;
 }
-video{
+video {
   width: 100% !important;
   height: 100% !important;
   margin-left: 0 !important;
+  position: absolute !important;
+  z-index: 1 !important;
 }

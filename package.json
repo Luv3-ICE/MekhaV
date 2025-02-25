@@ -20,6 +20,7 @@
     "aframe": "^1.6.0",
     "aframe-ar": "^0.2.1-a",
     "ar.js": "^2.2.2",
+    "axios": "^1.7.9",
     "framer-motion": "^12.4.3",
     "leaflet": "^1.9.4",
     "react": "^19.0.0",

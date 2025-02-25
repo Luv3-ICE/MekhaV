@@ -2,14 +2,9 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useEffect, useState } from "react";
 import "leaflet/dist/leaflet.css";
 
-const flowers = [
-  { id: 1, name: "ดอกไม้ A", lat: 13.7563, lng: 100.5018 },
-  { id: 2, name: "ดอกไม้ B", lat: 13.7575, lng: 100.5029 },
-];
-
-const MapView = () => {
+const MapView = ({ flowers }) => {
   const [userPosition, setUserPosition] = useState(null);
-
+  const userFlower = JSON.parse(localStorage.getItem("userFlower"));
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -21,11 +16,22 @@ const MapView = () => {
     }
   }, []);
 
+  const updatedFlowers = flowers.map((flower) => {
+    const isWatered = userFlower.some(
+      (userFlower) => userFlower.flower_id === flower.id
+    );
+    return {
+      ...flower,
+      status: isWatered ? "watered" : "thirsty",
+    };
+  });
+
   return (
     <MapContainer
-      center={[13.7563, 100.5018]}
+      center={[13.677892, 100.438262]}
       zoom={20}
       className="h-full w-full m-auto z-10"
+      zoomControl={false}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {userPosition && (
@@ -33,11 +39,24 @@ const MapView = () => {
           <Popup>คุณอยู่ที่นี่</Popup>
         </Marker>
       )}
-      {flowers.map((flower) => (
-        <Marker key={flower.id} position={[flower.lat, flower.lng]}>
-          <Popup>{flower.name}</Popup>
-        </Marker>
-      ))}
+      {updatedFlowers.map((flower) => {
+        const flowerIcon = L.icon({
+          iconUrl: flower.icon,
+          iconSize: [40, 40], // กำหนดขนาด
+          iconAnchor: [20, 40], // จุดยึดไอคอน
+          popupAnchor: [0, -35], // จุดแสดง popup
+          className: flower.status === "thirsty" ? "grayscale" : "",
+        });
+        return (
+          <Marker
+            key={flower.id}
+            position={[flower.lat, flower.lng]}
+            icon={flowerIcon}
+          >
+            <Popup>{flower.name}</Popup>
+          </Marker>
+        );
+      })}
     </MapContainer>
   );
 };

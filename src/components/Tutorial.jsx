@@ -38,11 +38,13 @@ const Tutorial = ({ onClose }) => {
 const HTP = (currentSlide) => {
   switch (currentSlide) {
     case 1:
-      return "แตะค้างที่ Icon บัวรดน้ำเพื่อรดน้ำต้นไม้";
-    case 2:
-      return "เมื่อรวบรวมจนครบทั้ง 6 แบบ สามารถนำหน้า Landing Page มาแสดงให้กับทีมงานเพื่อร่วมใช้งาน Video Booth ได้";
-    default:
       return "แสกน QR ตามพื้นที่ ที่กำหนดให้ในแผนที";
+    case 2:
+      return "แตะค้างที่ Icon บัวรดน้ำเพื่อรดน้ำต้นไม้";
+    case 3:
+      return "แตะค้างที่ Icon บัวรดน้ำเพื่อรดน้ำต้นไม้";
+    default:
+      return "ตามหาดอกไม้จำนวน 6 ชนิด";
   }
 };
 
