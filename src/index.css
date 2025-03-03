@@ -2,11 +2,21 @@
 :-webkit-scrollbar {
   display: none;
 }
+@font-face {
+  font-family: prompt;
+  src: url(./assets/font/Prompt-Regular.ttf);
+}
+* {
+  font-family: prompt;
+}
 body {
   margin: 0 !important;
   padding: 0;
   width: 100svw !important;
   height: 100svh !important;
+}
+.BG {
+  background-image: url(./assets/MainBG.png);
 }
 .stroke {
   -webkit-text-stroke: 1px oklch(0.588 0.158 241.966);
@@ -30,20 +40,17 @@ body {
 .transTL {
   transform: translate(-50%, -50%);
 }
-#arjs-video {
-  margin: 0 !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
+video {
   width: 100% !important;
-  height: 100% !important;
+  height: 90% !important;
+  left: 0 !important;
+  top: 10% !important;
   position: absolute !important;
   z-index: 1 !important;
 }
-video {
-  width: 100% !important;
-  height: 100% !important;
-  margin-left: 0 !important;
+.mindar-ui-overlay {
   position: absolute !important;
+  height: 90% !important;
+  top: 10% !important;
   z-index: 1 !important;
 }

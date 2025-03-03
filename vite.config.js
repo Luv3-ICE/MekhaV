@@ -4,11 +4,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vite.dev/config/
 export default defineConfig({
+  define: {
+    "process.env": {},
+  },
   plugins: [react(), tailwindcss()],
   server: {
     host: "0.0.0.0", // อนุญาตให้เข้าถึงจากภายนอก
     port: 5173, // ตรวจสอบว่า port ตรงกับที่ใช้จริง
     strictPort: true,
-    allowedHosts: ["fd29-183-88-235-220.ngrok-free.app"],
+    allowedHosts: ["5217-183-88-235-220.ngrok-free.app"],
   },
 });

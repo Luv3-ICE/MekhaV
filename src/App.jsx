@@ -5,17 +5,15 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import CamScan from "./pages/CamScan";
 import ModelViewer from "./pages/ModelViewer";
-import ARScene from "./pages/tryModel";
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/Main" element={<Main />} />
-        <Route path="/Cam" element={<CamScan />} />
-        <Route path="/Model" element={<ModelViewer />} />
-        {/* <Route path="/Model" element={<ARScene />} /> */}
+        <Route path="/main" element={<Main />} />
+        <Route path="/cam" element={<CamScan />} />
+        <Route path="/game" element={<ModelViewer />} />
       </Routes>
     </Router>
   );

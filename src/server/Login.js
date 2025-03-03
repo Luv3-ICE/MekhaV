@@ -18,14 +18,14 @@ export const loginUser = async (phoneNumber) => {
   }
 };
 
-export const verifyOtp = async (token, otp) => {
+export const verifyOtp = async (phoneNumber, token, otp) => {
   try {
     const response = await fetch(`${API_BASE_URL}/verifyOtp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ token, otp }),
+      body: JSON.stringify({ phone_number: phoneNumber, token, otp }),
     });
 
     const data = await response.json();

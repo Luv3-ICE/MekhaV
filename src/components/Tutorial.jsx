@@ -10,12 +10,12 @@ const Tutorial = ({ onClose }) => {
   const [isClosing, setIsClosing] = useState(false); // state สำหรับ animation ตอนปิด
 
   const handleClose = () => {
-    setIsClosing(true); // เริ่ม animation ปิด
-    setTimeout(onClose, 500); // รอ 500ms ก่อนปิดจริง
+    setIsClosing(true);
+    setTimeout(onClose, 500);
   };
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-150">
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-150" onClick={handleClose}>
       <motion.div
         initial={{ y: "-100vh", opacity: 0 }}
         exit={{ y: "-100vh", opacity: 0 }}
@@ -29,7 +29,7 @@ const Tutorial = ({ onClose }) => {
           setCurrentSlide={setCurrentSlide}
         />
         <p className="px-8">{HTP(currentSlide)}</p>
-        <ThemeBTN onClick={handleClose} text="close" />
+        <ThemeBTN onClick={handleClose} text="close" className="shadow my-5" />
       </motion.div>
     </div>
   );
@@ -40,9 +40,9 @@ const HTP = (currentSlide) => {
     case 1:
       return "แสกน QR ตามพื้นที่ ที่กำหนดให้ในแผนที";
     case 2:
-      return "แตะค้างที่ Icon บัวรดน้ำเพื่อรดน้ำต้นไม้";
+      return "เมื่อสแกนสำเร็จ ทำการวางดอกไม้เพื่อรดน้ำ กดที่บัวรดน้ำเพื่อรดน้ำ";
     case 3:
-      return "แตะค้างที่ Icon บัวรดน้ำเพื่อรดน้ำต้นไม้";
+      return "เมื่อรดน้ำครบทั้ง 6 ดอกแล้วจะสามารถไปแลกของรางวัลกับเจ้าหน้าที่ได้";
     default:
       return "ตามหาดอกไม้จำนวน 6 ชนิด";
   }

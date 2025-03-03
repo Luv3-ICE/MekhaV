@@ -4,26 +4,34 @@ import ThemeBTN from "../components/ThemeBTN";
 
 const CamScan = () => {
   const navigate = useNavigate();
+  const userData = JSON.parse(localStorage.getItem("userData"));
+  const userFlower = JSON.parse(localStorage.getItem("userFlower")) || [];
+  const totalFlowers = 6;
+  let watered = new Array(totalFlowers).fill(0);
+
+  userFlower.forEach((flower) => {
+    if (flower.flower_id >= 1 && flower.flower_id <= totalFlowers) {
+      watered[flower.flower_id - 1] = 1;
+    }
+  });
+
+  // console.log("Watered array:", watered);
 
   const cleanupVideoElements = () => {
-    // ลบ video elements ทั้งหมดที่มี id เป็น arjs-video
-    const videos = document.querySelectorAll("video#arjs-video");
+    const videos = document.querySelectorAll(".mindar-ui-overlay");
     videos.forEach((video) => {
-      // หยุดการเล่นวิดีโอ
-      video.pause();
-      // ล้าง source
       video.srcObject = null;
-      // ลบ element
       video.remove();
     });
   };
 
   const exit = () => {
     cleanupVideoElements();
-    navigate("/Main");
+    navigate("/main");
   };
 
   useEffect(() => {
+    const markers = ["lavender", "lavender2", "rose", "sunflower"];
     const handleMarkerFound = (event) => {
       const markerId = event.target.id;
       let modelPath = "";
@@ -31,41 +39,72 @@ const CamScan = () => {
       if (markerId === "lavender") {
         modelPath = "lavender";
       }
+      if (markerId === "rose") {
+        modelPath = "rose";
+      }
       if (modelPath) {
-        navigate(`/Model?model=${encodeURIComponent(modelPath)}`);
+        cleanupVideoElements;
+        navigate(
+          `/game?model=${encodeURIComponent(modelPath)}&player=${
+            userData.access_token
+          }&flower=${watered.join("")}`
+        );
       }
     };
-    document.querySelectorAll("a-marker").forEach((marker) => {
-      marker.addEventListener("markerFound", handleMarkerFound);
+    markers.forEach((id) => {
+      document
+        .getElementById(id)
+        ?.addEventListener("targetFound", handleMarkerFound);
     });
+
     return () => {
-      document.querySelectorAll("a-marker").forEach((marker) => {
-        marker.removeEventListener("markerFound", handleMarkerFound);
+      markers.forEach((id) => {
+        document
+          .getElementById(id)
+          ?.removeEventListener("targetFound", handleMarkerFound);
       });
-      cleanupVideoElements();
     };
   }, [navigate]);
 
   return (
-      <div className="w-svw h-svh relative text-center bg-[url('src/assets/MainBG.png')] bg-[58%] bg-cover z-0">
-      <ThemeBTN onClick={exit} text="exit" />
-        <a-scene
-          embedded
-          arjs="sourceType: webcam; debugUIEnabled: false;"
-          renderer="logarithmicDepthBuffer: true;"
-          vr-mode-ui="enabled: false"
-        >
-          <a-marker
-            id="lavender"
-            preset="lavender"
-            type="pattern"
-            url="src/assets/marker/PPT.patt"
-          >
-            {/* <a-box position="0 0.5 0" color="red"></a-box> */}
-          </a-marker>
-          <a-entity camera></a-entity>
-        </a-scene>
-      </div>
+    <div className="w-svw h-svh relative text-center bg-[url('src/assets/MainBG.png')] bg-[58%] bg-cover z-0">
+      <ThemeBTN
+        onClick={exit}
+        text="Exit"
+        className="absolute transTL top-1/20 z-10"
+      />
+      {/* <a-scene
+        embedded
+        arjs="debugUIEnabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        vr-mode-ui="enabled: false"
+      >
+        <a-marker
+          id="lavender"
+          preset="lavender"
+          type="pattern"
+          url="/marker/iHere.patt"
+        ></a-marker>
+        <a-marker
+          id="lavender2"
+          preset="lavender2"
+          type="pattern"
+          url="/marker/dokARai.patt"
+        ></a-marker>
+        <a-entity camera></a-entity>
+      </a-scene> */}
+      <a-scene
+        mindar-image="imageTargetSrc: /marker/targets.mind;"
+        color-space="sRGB"
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false"
+      >
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+        <a-entity mindar-image-target="targetIndex: 0" id="lavender"></a-entity>
+        <a-entity mindar-image-target="targetIndex: 1" id="rose"></a-entity>
+      </a-scene>
+    </div>
   );
 };
 

@@ -1,5 +1,6 @@
 {
-  "name": "mekha-v",
+  "name": "wondrous-bloom",
+  "description": "สแกนหาดอกไม้รอบตัวคุณเพื่อดูภาพ AR สนุกไปกับการสำรวจธรรมชาติผ่านเทคโนโลยีสุดล้ำ",
   "private": true,
   "version": "0.0.0",
   "type": "module",
