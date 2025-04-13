@@ -15,7 +15,7 @@ const Tutorial = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-150" onClick={handleClose}>
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-30">
       <motion.div
         initial={{ y: "-100vh", opacity: 0 }}
         exit={{ y: "-100vh", opacity: 0 }}
@@ -28,8 +28,8 @@ const Tutorial = ({ onClose }) => {
           currentSlide={currentSlide}
           setCurrentSlide={setCurrentSlide}
         />
-        <p className="px-8">{HTP(currentSlide)}</p>
-        <ThemeBTN onClick={handleClose} text="close" className="shadow my-5" />
+        <p className="px-8 h-10">{HTP(currentSlide)}</p>
+        <ThemeBTN onClick={handleClose} text="close" className="shadow my-5 strokeBlue" />
       </motion.div>
     </div>
   );

@@ -1,13 +1,16 @@
 @import "tailwindcss";
-:-webkit-scrollbar {
+
+::-webkit-scrollbar {
   display: none;
 }
 @font-face {
-  font-family: prompt;
-  src: url(./assets/font/Prompt-Regular.ttf);
+  /* font-family: prompt;
+  src: url(./assets/font/Prompt-Regular.ttf); */
+  font-family: iTim;
+  src: url(./assets/font/Itim-Regular.ttf);
 }
 * {
-  font-family: prompt;
+  font-family: iTim;
 }
 body {
   margin: 0 !important;
@@ -23,6 +26,13 @@ body {
 }
 .theme {
   background: linear-gradient(to right, #a78bfa, #3b82f6);
+}
+.themeRed {
+  background: linear-gradient(
+    to right,
+    #f71976,
+    #ff8282
+  ); /* ไล่สีชมพูแดง → แดงอ่อน */
 }
 .border_theme {
   background: linear-gradient(
@@ -54,3 +64,15 @@ video {
   top: 10% !important;
   z-index: 1 !important;
 }
+/* .strokeBlue {
+  text-shadow:
+    -2px -2px 0 #0a3e7a,  
+    2px -2px 0 #0a3e7a,
+    -2px 2px 0 #0a3e7a,
+    2px 2px 0 #0a3e7a;
+  -webkit-text-stroke: 1px #0a3e7a;
+}
+.strokeRed {
+  text-shadow: -2px -2px 0 #c750eb, 2px -2px 0 #c750eb, -2px 2px 0 #c750eb,
+    2px 2px 0 #c750eb;
+} */

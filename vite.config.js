@@ -9,9 +9,10 @@ export default defineConfig({
   },
   plugins: [react(), tailwindcss()],
   server: {
-    host: "0.0.0.0", // อนุญาตให้เข้าถึงจากภายนอก
-    port: 5173, // ตรวจสอบว่า port ตรงกับที่ใช้จริง
+    host: "0.0.0.0",
+    port: 5173,
     strictPort: true,
-    allowedHosts: ["5217-183-88-235-220.ngrok-free.app"],
+    allowedHosts: ["3276-171-6-142-48.ngrok-free.app"],
+    network: true,
   },
 });

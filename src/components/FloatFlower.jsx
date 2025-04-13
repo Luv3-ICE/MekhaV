@@ -4,25 +4,15 @@ import { motion } from "framer-motion";
 import gift from "../assets/gift.png";
 import { RewardModal, WaterCan } from "./RewardModal";
 
-function FloatFlower({ flowers }) {
-  const userFlower = JSON.parse(localStorage.getItem("userFlower")) || [];
+const FloatFlower=({ flowers })=> {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const userData = JSON.parse(localStorage.getItem("userData"));
   const allWatered = userData.is_reward;
-  const updatedFlowers = flowers.map((flower) => {
-    const isWatered = userFlower.some(
-      (userFlower) => userFlower.flower_id === flower.id
-    );
-    return {
-      ...flower,
-      status: isWatered ? "watered" : "thirsty",
-    };
-  });
 
   return (
-    <div className="border_theme shadow w-11/12 h-32 absolute bg-blue-50 z-50 rounded-xl border-3 top-0 left-1/24 flex-col content-center">
+    <div className="border_theme shadow w-11/12 h-32 absolute bg-blue-50 z-30 rounded-xl border-3 top-0 left-1/24 flex-col content-center">
       <div className="w-full flex justify-between px-3 align-center">
-        {updatedFlowers.map((flower) => (
+        {flowers.map((flower) => (
           <WaterCan key={flower.id} flower={flower} />
         ))}
       </div>
@@ -38,12 +28,12 @@ function FloatFlower({ flowers }) {
           Click to redeem reward!
         </motion.div>
       ) : (
-        <p className="text-sky-600">Colect all 6 location to redeem reward</p>
+        <p className="text-sky-600">Collect all 6 location to redeem reward</p>
       )}
       {isModalOpen && (
         <RewardModal
           onClose={() => setIsModalOpen(false)}
-          updatedFlowers={updatedFlowers}
+          updatedFlowers={flowers}
         />
       )}
     </div>

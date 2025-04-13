@@ -1,64 +1,71 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useEffect, useState } from "react";
-import "leaflet/dist/leaflet.css";
+import React from "react";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import Map from "../assets/map/map.png";
+import zoomReset from "../assets/map/zoomReset.png";
 
-const MapView = ({ flowers }) => {
-  const [userPosition, setUserPosition] = useState(null);
-  const userFlower = JSON.parse(localStorage.getItem("userFlower"));
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setUserPosition({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      });
-    }
-  }, []);
-
-  const updatedFlowers = flowers.map((flower) => {
-    const isWatered = userFlower.some(
-      (userFlower) => userFlower.flower_id === flower.id
-    );
-    return {
-      ...flower,
-      status: isWatered ? "watered" : "thirsty",
-    };
-  });
-
+const Map2 = ({ flowers }) => {
   return (
-    <MapContainer
-      center={[13.677892, 100.438262]}
-      zoom={20}
-      className="h-full w-full m-auto z-10"
-      zoomControl={false}
-    >
-      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      {userPosition && (
-        <Marker position={[userPosition.lat, userPosition.lng]}>
-          <Popup>คุณอยู่ที่นี่</Popup>
-        </Marker>
-      )}
-      {updatedFlowers.map((flower) => {
-        const flowerIcon = L.icon({
-          iconUrl: flower.icon,
-          iconSize: [40, 40], // กำหนดขนาด
-          iconAnchor: [20, 40], // จุดยึดไอคอน
-          popupAnchor: [0, -35], // จุดแสดง popup
-          className: flower.status === "thirsty" ? "grayscale" : "",
-        });
-        return (
-          <Marker
-            key={flower.id}
-            position={[flower.lat, flower.lng]}
-            icon={flowerIcon}
-          >
-            <Popup>{flower.name}</Popup>
-          </Marker>
-        );
-      })}
-    </MapContainer>
+    <div className="h-full w-full overflow-hidden relative">
+      <TransformWrapper
+        initialScale={1}
+        minScale={0.5}
+        maxScale={3}
+        limitToBounds={false}
+        doubleClick={{ disabled: true }}
+      >
+        {({ zoomIn, zoomOut, resetTransform }) => (
+          <React.Fragment>
+            <div className="absolute bottom-25 right-5 z-10">
+              <div className="w-10 h-10" onClick={() => resetTransform()}>
+                <img src={zoomReset} alt="Reset zoom" />
+              </div>
+            </div>
+
+            <TransformComponent
+              wrapperStyle={{
+                width: "100%",
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              contentStyle={{ width: "100%", height: "max-content" }}
+            >
+              <div className="relative h-max w-max">
+                <img
+                  src={Map}
+                  alt="Map"
+                  className="select-none"
+                  draggable={false}
+                />
+                {flowers.map((flower) => (
+                  <div
+                    key={flower.id}
+                    className="absolute flex flex-col items-center"
+                    style={{
+                      left: `${flower.x}`,
+                      top: `${flower.y}`,
+                      display: flower.feeling === "sad" ? "none" : "inline",
+                    }}
+                  >
+                    <img
+                      src={
+                        flower.status === "thirsty"
+                          ? flower.thirsty
+                          : flower.watered
+                      }
+                      alt="flower"
+                      className="w-10 h-10 transTL"
+                    />
+                  </div>
+                ))}
+              </div>
+            </TransformComponent>
+          </React.Fragment>
+        )}
+      </TransformWrapper>
+    </div>
   );
 };
 
-export default MapView;
+export default Map2;

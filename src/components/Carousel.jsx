@@ -29,7 +29,7 @@ const Carousel = ({ currentSlide, setCurrentSlide }) => {
     <div className="w-full max-w-2xl mx-auto textalign-center">
       <Slider {...settings} initialSlide={currentSlide}>
         <div>
-          <img src={HTP0} alt="Slide 1" className="w-11/12 max-h-102 m-auto mt-4 object-bottom object-cover" />
+          <img src={HTP0} alt="Slide 1" className="w-11/12 m-auto mt-4 object-cover h-102" />
         </div>
         <div>
           <img src={HTP1} alt="Slide 2" className="w-11/12 m-auto mt-4" />
