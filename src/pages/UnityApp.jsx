@@ -24,7 +24,7 @@ const UnityApp = () => {
   useEffect(() => {
     const handleMessage = (event) => {
       try {
-        const data = JSON.parse(event.data); 
+        const data = JSON.parse(event.data);
         console.log("Message received:", data);
         if (data?.path === "/main") {
           console.log("Navigating to:", data.path);
@@ -45,6 +45,7 @@ const UnityApp = () => {
   return (
     <>
       <iframe
+        id="unity-iframe"
         src={unityUrl}
         title="Unity WebGL"
         style={{ width: "100svw", height: "100svh", border: "none" }}

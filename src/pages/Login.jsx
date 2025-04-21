@@ -15,7 +15,7 @@ const Login = () => {
   const [otp, setOtp] = useState(["", "", "", "", ""]);
   const [otpErr, setOtpErr] = useState(false);
   const [token, setToken] = useState("");
-  const [otpIsError, setOtpIsError] = useState(false);
+  const [otpIsError, setOtpIsError] = useState(true);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("userData"));

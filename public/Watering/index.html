@@ -243,17 +243,20 @@
     <div
       id="errorDiv"
       class="ctaDiv"
-      style="visibility: hidden; opacity: 0; background-color: #2c2b2f"
+      style="
+        visibility: hidden;
+        opacity: 0;
+        background-color: #2c2b2f;
+        width: 100svw;
+        height: 100svh;
+        align-items: center;
+        justify-content: center;
+      "
     >
-      <p
-        id="errorText"
-        style="
-          text-align: center;
-          width: 60vw;
-          color: #7f3f3f;
-          font-size: max(3vw, 3vh);
-        "
-      ></p>
+      <img
+        src="TemplateData/error.png"
+        style="width: 80%; border-radius: 12px"
+      />
     </div>
     <div id="unity-container">
       <canvas id="unity-canvas" width="960" height="600" tabindex="-1"></canvas>
@@ -280,7 +283,13 @@
     <script src="arcamera.js" type="text/javascript"></script>
     <script src="wtracker.js" type="text/javascript"></script>
     <script>
-      
+      window.addEventListener("message", function (e) {
+        if (e.data.type === "startExperience") {
+          // เริ่ม AR แบบไม่ต้องรอ permission ที่นี่
+          StartAR(); // <-- ฟังก์ชัน Unity เดิม
+        }
+      });
+
       // Disable double-tap to zoom
       document.addEventListener(
         "touchstart",
@@ -686,8 +695,18 @@
             console.log("Motion sensors started");
           })
           .catch((error) => {
-            console.error("Failed to start motion sensors - " + error);
-            ShowError("Failed to start the experience. " + error);
+            console.error("Failed to start motion sensors -", error);
+
+            if (
+              typeof error === "string" &&
+              (error.includes("denied") ||
+                error.includes("Permission") ||
+                error.includes("not allowed"))
+            ) {
+              ShowError();
+            } else {
+              ShowError("ไม่สามารถเริ่มใช้งานเซ็นเซอร์ได้: " + error);
+            }
           });
       }
 
@@ -707,7 +726,9 @@
         var errorDiv = document.getElementById("errorDiv");
         errorDiv.style.opacity = 1;
         errorDiv.style.visibility = "visible";
-        document.getElementById("errorText").innerHTML = error;
+        if (error) {
+          document.getElementById("errorText").innerHTML = error;
+        }
       }
 
       function ShowScreenshot(dataUrl) {

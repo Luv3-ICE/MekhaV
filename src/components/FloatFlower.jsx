@@ -28,7 +28,7 @@ const FloatFlower=({ flowers })=> {
           Click to redeem reward!
         </motion.div>
       ) : (
-        <p className="text-sky-600">Collect all 6 location to redeem reward</p>
+        <p className="text-sky-600">Collect all 6 locations to redeem reward</p>
       )}
       {isModalOpen && (
         <RewardModal

@@ -17,8 +17,8 @@ export const flowers = [
   {
     id: 1,
     name: "Lavender",
-    x: "30%",
-    y: "69%",
+    x: "38%",
+    y: "79%",
     watered: Lavender,
     thirsty: LavenderNope,
     status: "thirsty",
@@ -27,8 +27,8 @@ export const flowers = [
   {
     id: 2,
     name: "RedGinger",
-    x: "68%",
-    y: "42%",
+    x: "64.8%",
+    y: "62%",
     watered: RedGinger,
     thirsty: RedGingerNope,
     status: "thirsty",
@@ -37,8 +37,8 @@ export const flowers = [
   {
     id: 3,
     name: "Tulip",
-    x: "60%",
-    y: "55%",
+    x: "55%",
+    y: "56%",
     watered: Tulip,
     thirsty: TulipNope,
     status: "thirsty",
@@ -67,7 +67,7 @@ export const flowers = [
   {
     id: 6,
     name: "Artichoke",
-    x: "15%",
+    x: "24%",
     y: "77%",
     watered: Artichoke,
     thirsty: ArtichokeNope,
